@@ -29,3 +29,16 @@ async def print_out(body: CensusEntry):
     return body
 
 
+@app.post("/predict")
+async def predict(census_entry: CensusEntry):
+    census_dict = census_entry.dict(by_alias=True)
+    census_dict_frame = ({k: [v] for k, v in census_dict.items()})
+    data = pd.DataFrame.from_dict(census_dict_frame)
+
+    X_categorical = data[cat_features].values
+    X_continuous = data.drop(*[cat_features], axis=1).values
+
+    X_categorical = encoder.transform(X_categorical)
+    X = np.concatenate([X_continuous, X_categorical], axis=1)
+    preds = inference(model, X)
+    return {"result": "<=50K" if preds[0] else "<50k"}
