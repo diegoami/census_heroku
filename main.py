@@ -12,7 +12,7 @@ import os
 from fastapi.encoders import jsonable_encoder
 import numpy as np
 
-dirname = os.path.join(os.getcwd(), 'model', 'v1')
+dirname = os.path.join(os.getcwd(), 'model', 'latest')
 # Add code to load in the data.
 model = joblib.load(os.path.join(dirname, 'model'))
 encoder = joblib.load(os.path.join(dirname, 'encoder'))
