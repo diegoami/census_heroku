@@ -44,13 +44,18 @@ jobs:
       run: |
         cd data
         dvc pull
-    - name: Config Heroku for AWS
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku config:set AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
     - name: Build and push
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        heroku_app_name: "da-census-uda-heroku"
+        heroku_email: "diego.amicabile@gmail.com"
       run: git push heroku main:main
+    - name: Config Heroku for AWS
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        heroku_app_name: "da-census-uda-heroku"
+        heroku_email: "diego.amicabile@gmail.com"
+      run: heroku config:set AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
 
 
