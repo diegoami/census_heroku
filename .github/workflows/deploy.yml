@@ -19,7 +19,9 @@ jobs:
       run: |
         echo ${{ secrets.AWS_ACCESS_KEY_ID }}
         echo ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        echo ${{ secrets.HEROKU_API_KEY }}
+        echo ${{ secrets.HEROKU_API_TOKEN }}
+        echo ${{ secrets.HEROKU_APP_NAME }}
+        echo ${{ secrets.HEROKU_EMAIL }}
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -47,7 +49,7 @@ jobs:
     - name: Deploy to Heroku
       uses: akhileshns/heroku-deploy@v3.12.12
       with:
-        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+        heroku_api_key: ${{ secrets.HEROKU_API_TOKEN }}
         heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
         heroku_email: ${{ secrets.HEROKU_EMAIL }}
     - name: Config Heroku for AWS
