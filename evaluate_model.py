@@ -11,6 +11,7 @@ import os
 
 from ml.data import process_data
 from ml.model import inference, compute_model_metrics
+from ml.eval import get_tn_fp_fn_tp
 from sklearn.metrics import confusion_matrix
 
 if __name__ == "__main__":
@@ -58,18 +59,11 @@ if __name__ == "__main__":
     preds = inference(model, X)
     print(" =============== GENERAL ====================")
     precision, recall, fbeta = compute_model_metrics(y, preds)
-    cm = confusion_matrix(y, preds).ravel()
-
-    # Add code to load in the data.
     print(f"precision: {precision}, recall: {recall}, fbeta: {fbeta}")
-    if len(cm) == 4:
-        tn, fp, fn, tp = cm
-        print(f"TP, FP, FN, TN: {(tn, fp, fn, tp)}")
+    tn, fp, fn, tp = get_tn_fp_fn_tp(y, preds)
+    print(f"TP, FP, FN, TN: {(tn, fp, fn, tp)}")
 
-    print("============================================")
-    print()
-    print()
-    print()
+    print("\n============================================\n")
 
     for slice_feature in cat_features:
         list_unique = data[slice_feature].unique()
@@ -81,13 +75,10 @@ if __name__ == "__main__":
             print(f"== CLS FOR FEATURE : {cls}")
             idx_slice = data[slice_feature] == cls
             x_slice, y_slice, preds_slice = X[idx_slice], y[idx_slice], preds[idx_slice]
+
             precision, recall, fbeta = compute_model_metrics(y_slice, preds_slice)
             print(f"precision: {precision}, recall: {recall}, fbeta: {fbeta}")
-            cm = confusion_matrix(y_slice, preds_slice).ravel()
-            if len(cm) == 4:
-                tn, fp, fn, tp = cm
-                print(f"TP, FP, FN, TN: {(tn, fp, fn, tp)}")
-        print()
-        print()
-        print()
-        print()
+
+            tn, fp, fn, tp = get_tn_fp_fn_tp(y_slice, preds_slice)
+            print(f"TP, FP, FN, TN: {(tn, fp, fn, tp)}")
+        print("\n\n\n\n")
