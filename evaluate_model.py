@@ -10,7 +10,7 @@ import joblib
 import os
 
 from ml.data import process_data
-from ml.model import train_model, inference, compute_model_metrics
+from ml.model import inference, compute_model_metrics
 from sklearn.metrics import confusion_matrix
 
 if __name__ == "__main__":
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     cat_features = joblib.load(os.path.join(dirname, 'cat_features'))
 
     X, y, _, _ =  process_data(
-        data, categorical_features=cat_features, label="salary", encoder = encoder, lb = lb, training = True
+        data, categorical_features=cat_features, label="salary", encoder = encoder, lb = lb, training = False
     )
 
     idx_pos, idx_neg = y == 0, y == 1

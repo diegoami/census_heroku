@@ -1,7 +1,8 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import confusion_matrix
+
+import warnings
 
 
 # Optional: implement hyperparameter tuning.
@@ -27,14 +28,17 @@ def train_model(X_train, y_train):
         'max_depth': [4, 5, 6, 7, 8],
         'criterion': ['gini', 'entropy']
     }
-    rfc = RandomForestClassifier(random_state=42)
-    CV_rfc = GridSearchCV(estimator=rfc, param_grid=param_grid, cv=5)
-    CV_rfc.fit(X_train, y_train)
-    best_params = CV_rfc.best_params_
-    print(f"Found best params: {best_params}")
-    rfc_cv = RandomForestClassifier(random_state=42, **best_params )
-    model = rfc_cv.fit(X_train, y_train)
-    return model
+    with warnings.catch_warnings():
+        # ignore all caught warnings
+        warnings.filterwarnings("ignore")
+        rfc = RandomForestClassifier(random_state=42)
+        CV_rfc = GridSearchCV(estimator=rfc, param_grid=param_grid, cv=5)
+        CV_rfc.fit(X_train, y_train)
+        best_params = CV_rfc.best_params_
+        print(f"Found best params: {best_params}")
+        rfc_cv = RandomForestClassifier(random_state=42, **best_params )
+        model = rfc_cv.fit(X_train, y_train)
+        return model
 
 
 

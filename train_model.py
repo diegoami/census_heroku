@@ -70,7 +70,13 @@ if __name__ == "__main__":
     preds = inference(model, X_test)
     precision, recall, fbeta = compute_model_metrics(y_test, preds)
     # Train and save a model.
+    print(f"performance on test: ")
     print(f"precision: {precision}, recall: {recall}, fbeta: {fbeta}")
 
+    X, y, _, _ =  process_data(
+        data, categorical_features=cat_features, label="salary", encoder = encoder, lb = lb, training = False
+    )
+    print(f"performance overall: ")
+    print(f"precision: {precision}, recall: {recall}, fbeta: {fbeta}")
 
 
