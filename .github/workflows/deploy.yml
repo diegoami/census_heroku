@@ -19,7 +19,7 @@ jobs:
       run: |
         echo ${{ secrets.AWS_ACCESS_KEY_ID }}
         echo ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        echo ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        echo ${{ secrets.HEROKU_API_KEY }}
     - name: Login to Heroku Container registry
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
