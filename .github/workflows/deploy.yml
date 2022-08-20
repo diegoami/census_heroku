@@ -15,7 +15,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Show Secrets
+    - name: Check Secrets
       run: |
         echo ${{ secrets.AWS_ACCESS_KEY_ID }}
         echo ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -55,8 +55,8 @@ jobs:
     - name: Config Heroku for AWS
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        heroku_app_name: "da-census-uda-heroku"
-        heroku_email: "diego.amicabile@gmail.com"
+        heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+        heroku_email: "${{ secrets.HEROKU_EMAIL }}
       run: heroku config:set AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 
