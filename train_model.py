@@ -77,6 +77,8 @@ if __name__ == "__main__":
         data, categorical_features=cat_features, label="salary", encoder = encoder, lb = lb, training = False
     )
     print(f"performance overall: ")
-    print(f"precision: {precision}, recall: {recall}, fbeta: {fbeta}")
+    preds_all = inference(model, X)
+    precision_tot, recall_tot, fbeta_tot = compute_model_metrics(y, preds_all)
+    print(f"precision: {precision_tot}, recall: {recall_tot}, fbeta: {fbeta_tot}")
 
 
