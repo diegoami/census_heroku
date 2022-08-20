@@ -62,11 +62,11 @@ def xgb_train_model(X_train, y_train):
 
     seed = 42
     param_grid = {
-        'max_iter': [750, 1000, 1200, 1500],
-        'learning_rate': [0.01, 0.1, 1],
+        'max_iter': [500, 750, 1000],
+        'learning_rate': [0.01, 0.1],
         'max_depth': [20, 25, 30],
-        'max_leaf_nodes': [10, 30, 50],
-        'l2_regularization': [0, 0.5, 1, 1.5, 2],
+        'max_leaf_nodes': [30, 40, 50, 60],
+        'l2_regularization': [0.2, 0.6, 1, 1.4, 1.8, 2.2],
         'scoring': ['f1_micro', 'loss'],
         'min_samples_leaf': [10, 15, 20]
     }
@@ -75,7 +75,7 @@ def xgb_train_model(X_train, y_train):
         # ignore all caught warnings
         warnings.filterwarnings("ignore")
         hgbc = HistGradientBoostingClassifier(random_state=seed)
-        CV_hgbc = RandomizedSearchCV(estimator=hgbc, param_grid=param_grid, cv=5)
+        CV_hgbc = RandomizedSearchCV(estimator=hgbc, param_distributions=param_grid, cv=5)
         CV_hgbc.fit(X_train, y_train)
         best_params = CV_hgbc.best_params_
         print(f"Found best params: {best_params}")
@@ -124,3 +124,5 @@ def inference(model, X):
 
     preds = model.predict(X)
     return preds
+
+

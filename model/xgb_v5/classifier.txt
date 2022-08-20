@@ -1,0 +1,8 @@
+HistGradientBoostingClassifier
+/home/diego/projects/ud_mlops/census_heroku/venv/bin/python /home/diego/projects/ud_mlops/census_heroku/train_model.py
+Found best params: {'scoring': 'loss', 'min_samples_leaf': 15, 'max_leaf_nodes': 40, 'max_iter': 1000, 'max_depth': 25, 'learning_rate': 0.1, 'l2_regularization': 1}
+performance on test:
+precision: 0.784167289021658, recall: 0.6696428571428571, fbeta: 0.7223942208462333
+performance overall:
+precision: 0.8117629496939842, recall: 0.6935339880117332, fbeta: 0.7480055020632737
+
