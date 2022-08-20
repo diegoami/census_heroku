@@ -45,11 +45,11 @@ jobs:
         cd data
         dvc pull
     - name: Build and push
+      uses: akhileshns/heroku-deploy@v3.12.12
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         heroku_app_name: "da-census-uda-heroku"
         heroku_email: "diego.amicabile@gmail.com"
-      run: git push heroku main:main
     - name: Config Heroku for AWS
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
