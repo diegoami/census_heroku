@@ -130,3 +130,12 @@ TN, FP, FN, TP: (2687, 50, 153, 234)
 
 As expected we see the same phenomenon in other splits, although it is not as dramatic as one might fear. We see that female have lower recall and are more often incorrectly flagged as low-income than males. So is the case for black people compared to white people.
 
+### LOCAL TEST
+
+The API used to call the model and retrieve a result can be found in `main.py`.
+A web server publishing the model that can be used to return predictions can be started with `uvicorn main:app`
+Then with the test `test_local_census_api.py` it can be started.
+
+
+
+
