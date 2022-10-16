@@ -7,4 +7,6 @@ fastapi==0.63.0
 uvicorn
 gunicorn
 jupyter
+jupyterlab
 pandas_profiling
+dvc[s3]

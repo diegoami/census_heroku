@@ -20,6 +20,5 @@ dummy_census_entry = {
 
 def test_predict():
     response = requests.post('https://pacific-garden-34952.herokuapp.com/predict', json=dummy_census_entry)
-
     print(response.status_code)
     print(response.json())
