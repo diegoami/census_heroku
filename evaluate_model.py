@@ -61,7 +61,7 @@ if __name__ == "__main__":
     precision, recall, fbeta = compute_model_metrics(y, preds)
     print(f"precision: {precision}, recall: {recall}, fbeta: {fbeta}")
     tn, fp, fn, tp = get_tn_fp_fn_tp(y, preds)
-    print(f"TP, FP, FN, TN: {(tn, fp, fn, tp)}")
+    print(f"TN, FP, FN, TP: {(tn, fp, fn, tp)}")
 
     print("\n============================================\n")
 
@@ -78,7 +78,9 @@ if __name__ == "__main__":
 
             precision, recall, fbeta = compute_model_metrics(y_slice, preds_slice)
             print(f"precision: {precision}, recall: {recall}, fbeta: {fbeta}")
-
-            tn, fp, fn, tp = get_tn_fp_fn_tp(y_slice, preds_slice)
-            print(f"TP, FP, FN, TN: {(tn, fp, fn, tp)}")
+            if y_slice is not None and preds_slice is not None:
+                slice_result = get_tn_fp_fn_tp(y_slice, preds_slice)
+                if slice_result:
+                    tn, fp, fn, tp = slice_result
+                    print(f"TN, FP, FN, TP: {(tn, fp, fn, tp)}")
         print("\n\n\n\n")

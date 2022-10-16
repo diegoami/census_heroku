@@ -36,6 +36,7 @@ if __name__ == "__main__":
 
     # Add code to load in the data.
     args = parser.parse_args()
+    print(f"Reading training data from file {args.data_file_name}")
     data = pd.read_csv(args.data_file_name)
     # Optional enhancement, use K-fold cross validation instead of a train-test split.
     train, test = train_test_split(data, test_size=0.20, shuffle=True, stratify=data["salary"])
@@ -59,24 +60,28 @@ if __name__ == "__main__":
         test, categorical_features=cat_features, label="salary", encoder = encoder, lb = lb, training = False
     )
 
+    print("Starting to train model....")
     model = train_model(X_train, y_train)
+
     dirname = args.model_dir_name
+    print(f"Saving model artifacts to {dirname}")
+
     os.makedirs(dirname, exist_ok=True)
     joblib.dump(model, os.path.join(dirname, 'model'))
     joblib.dump(encoder, os.path.join(dirname, 'encoder'))
     joblib.dump(lb, os.path.join(dirname, 'lb'))
     joblib.dump(cat_features, os.path.join(dirname, 'cat_features'))
 
+    print(f"Evaluating performance on test data...")
     preds = inference(model, X_test)
     precision, recall, fbeta = compute_model_metrics(y_test, preds)
     # Train and save a model.
-    print(f"performance on test: ")
     print(f"precision: {precision}, recall: {recall}, fbeta: {fbeta}")
 
     X, y, _, _ =  process_data(
         data, categorical_features=cat_features, label="salary", encoder = encoder, lb = lb, training = False
     )
-    print(f"performance overall: ")
+    print(f"Evaluating overall performance...")
     preds_all = inference(model, X)
     precision_tot, recall_tot, fbeta_tot = compute_model_metrics(y, preds_all)
     print(f"precision: {precision_tot}, recall: {recall_tot}, fbeta: {fbeta_tot}")

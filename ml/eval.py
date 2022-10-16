@@ -6,11 +6,11 @@ from ml.model import compute_model_metrics
 
 def get_tn_fp_fn_tp(y, preds):
     cm = confusion_matrix(y, preds).ravel()
-    if len(cm) == 4:
+    if cm is not None and len(cm) == 4:
         tn, fp, fn, tp = cm
-        print(f"TP, FP, FN, TN: {(tn, fp, fn, tp)}")
         return tn, fp, fn, tp
-
+    else:
+        return None
 def get_metric_info(y, preds):
     metric_info = MetricInfo()
     precision, recall, fbeta = compute_model_metrics(y=y, preds=preds)
