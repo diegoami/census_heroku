@@ -139,3 +139,6 @@ Then with the test `test_local_census_api.py` it can be started.
 
 
 
+## DEPLOYING REMOTELY
+
+The project is deployed on github
