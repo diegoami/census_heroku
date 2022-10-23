@@ -141,7 +141,8 @@ Then with the test `python -m pytest test_local_census_api.py` it can be verifie
 
 ### TESTING
 
-The testing are located in the `test` directory and can be executed with `pytest`
+The tests are located in the `test` directory and can be executed with `PYTHONPATH=$(pwd) pytest`.
+
 
 
 ## DEPLOYING REMOTELY
@@ -150,4 +151,5 @@ The project is deployed on github: https://github.com/diegoami/census_heroku
 
 To ensure deployment on Heroku, two workflows have been setup,
 
-* deploy.yml just deploys the model on heroku for retrieval
+* _deploy.yml_ just deploys a previously created model on heroku and publishes the API
+* _test_and_deploy_ executes some test before deploying on heroku
