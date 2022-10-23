@@ -130,15 +130,24 @@ TN, FP, FN, TP: (2687, 50, 153, 234)
 
 As expected we see the same phenomenon in other splits, although it is not as dramatic as one might fear. We see that female have lower recall and are more often incorrectly flagged as low-income than males. So is the case for black people compared to white people.
 
-### LOCAL TEST
+### LOCAL API
+
+
 
 The API used to call the model and retrieve a result can be found in `main.py`.
-A web server publishing the model that can be used to return predictions can be started with `uvicorn main:app`
-Then with the test `test_local_census_api.py` it can be started.
+A web server publishing the model that can be used to return predictions can be started from a command line with `uvicorn main:app`, 
+which will start tha application on `http://127.0.0.1:8000`
+Then with the test `python -m pytest test_local_census_api.py` it can be verified that a model is running and giving prediction results
 
+### TESTING
 
+The testing are located in the `test` directory and can be executed with `pytest`
 
 
 ## DEPLOYING REMOTELY
 
-The project is deployed on github
+The project is deployed on github: https://github.com/diegoami/census_heroku
+
+To ensure deployment on Heroku, two workflows have been setup,
+
+* deploy.yml just deploys the model on heroku for retrieval

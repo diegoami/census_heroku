@@ -1,6 +1,6 @@
-import requests
+import pytest
 
-dummy_census_entry = {
+first_census_entry = {
     "age": 20,
     "workclass": "State-gov",
     "fnlgt": 3000,
@@ -17,8 +17,6 @@ dummy_census_entry = {
     "native-country": "United-States"
 }
 
-
-def test_predict():
-    response = requests.post('https://pacific-garden-34952.herokuapp.com/predict', json=dummy_census_entry)
-    print(response.status_code)
-    print(response.json())
+@pytest.fixture
+def census_entries():
+    return [first_census_entry]
