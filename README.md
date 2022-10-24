@@ -11,9 +11,11 @@ python -m pip install -r requirements_local.txt
 
 ### MANAGING DATA
 
-The data can be found in the directory `data`, in the file `census.csv`.
+The data can be found in the directory `data`, in the file `census.csv`. 
+It can be retrieved wit `dvc pull` (check how it works somewhere else)
 The idea is to create a model able to predict whether someone earns more or less than 50K based on their census data.
 It contains a version of the census data, which has been managed with `DVC` and cleaned up to get better results
+The original data is in the file `orig.csv`
 
 ### DATA ANALYSIS
 
