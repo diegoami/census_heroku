@@ -66,8 +66,8 @@ An evaluation of the model and how it behaves can be found in [notebooks\Analyse
 
 The API used to call the model and retrieve a result can be found in `api/main.py`.
 A web server publishing the model that can be used to return predictions can be started from a command line with `uvicorn api.main:app`, 
-which will start tha application on `http://127.0.0.1:8000`
-Then with the test `python -m pytest test/test_local_census_api.py` it can be verified that a model is running and giving prediction results
+which will start tha application on `http://127.0.0.1:8000`.
+Then with the test `TEST_LOCAL_API=1 python -m pytest test/test_local_census_api.py` it can be verified that a model is running and giving prediction results
 
 ### TESTING
 
@@ -84,3 +84,9 @@ To ensure deployment on Heroku, two workflows have been setup,
 * _test_and_deploy_ executes retrieves data, creates a model and deploys it on heroku
 * _deploy_ deploys the model to heroku. The model deployed is the one in the directory `model/latest`
  
+## HEROKU REPOSITORY
+
+An application has been created with Heroku using the following commands:
+
+heroku create
+git push heroku main
