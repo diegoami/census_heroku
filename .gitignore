@@ -2,3 +2,4 @@ venv/
 .idea/
 data/new_user_credentials.csv
 .pytest_cache
+*.pyc
