@@ -11,9 +11,11 @@ python -m pip install -r requirements_local.txt
 
 ### MANAGING DATA
 
-The data can be found in the directory `data`, in the file `census.csv`. 
-It can be retrieved wit `dvc pull` (check how it works somewhere else)
-The idea is to create a model able to predict whether someone earns more or less than 50K based on their census data.
+The data can be found in the directory `data`. It is managed with DVC by means of `census.csv.dvc`.
+It is retrieved from a remote repository, `s3://ud-mlops-3/census`
+It can be retrieved wit `dvc pull`
+
+Using this data we can create a model able to predict whether someone earns more or less than 50K based on their census data.
 It contains a version of the census data, which has been managed with `DVC` and cleaned up to get better results
 The original data is in the file `orig.csv`
 
@@ -137,7 +139,7 @@ As expected we see the same phenomenon in other splits, although it is not as dr
 
 
 The API used to call the model and retrieve a result can be found in `main.py`.
-A web server publishing the model that can be used to return predictions can be started from a command line with `uvicorn main:app`, 
+A web server publishing the model that can be used to return predictions can be started from a command line with `uvicorn api.main:app`, 
 which will start tha application on `http://127.0.0.1:8000`
 Then with the test `python -m pytest test_local_census_api.py` it can be verified that a model is running and giving prediction results
 
@@ -153,5 +155,6 @@ The project is deployed on github: https://github.com/diegoami/census_heroku
 
 To ensure deployment on Heroku, two workflows have been setup,
 
-* _deploy.yml_ just deploys a previously created model on heroku and publishes the API
-* _test_and_deploy_ executes some test before deploying on heroku
+* _test_and_deploy_ executes retrieves data, creates a model and deploys it on heroku
+* _deploy_ deploys the model to heroku. The model deployed is the one in the directory `model/latest`
+ 

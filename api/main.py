@@ -2,14 +2,11 @@
 # bar.py
 
 from fastapi import FastAPI
-from pydantic import BaseModel
 from values.census_entry import CensusEntry
-from ml.data import process_data
 from ml.model import inference
 import pandas as pd
 import joblib
 import os
-from fastapi.encoders import jsonable_encoder
 import numpy as np
 
 

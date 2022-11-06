@@ -3,7 +3,7 @@ from fastapi.testclient import TestClient
 from common.fixtures import census_entries
 
 
-from main import app
+from api.main import app
 
 client = TestClient(app)
 
