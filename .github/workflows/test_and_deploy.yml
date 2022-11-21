@@ -57,7 +57,7 @@ jobs:
         python evaluate_model.py
     - name: Test with pytest
       run: |
-        PYTHONPATH=($pwd) pytest
+        pytest
     - name: Deploy to Heroku
       uses: akhileshns/heroku-deploy@v3.12.12
       with:
