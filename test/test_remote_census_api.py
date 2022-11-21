@@ -13,7 +13,7 @@ def port():
     return os.environ.get("PORT", 80)
 
 
-@pytest.mark.skip
+@pytest.mark.skipif(os.environ.get("TEST_REMOTE_API") == None, reason="TEST_REMOTE_API not defined")
 def test_predict(census_entries, host, port):
     for census_entry in census_entries:
         response = requests.post(f'https://pacific-garden-34952.herokuapp.com/predict', json=census_entry)
