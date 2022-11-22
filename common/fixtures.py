@@ -67,6 +67,8 @@ missing_fields_entry = {
     "native-country": "England"
 }
 
+def generate_entry():
+
 
 @pytest.fixture
 def census_entries():

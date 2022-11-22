@@ -7,10 +7,14 @@ Model card speicification on https://arxiv.org/pdf/1810.03993.pdf
 Developed by: Diego Amicabile
 On: 18th of October 2022
 Version: 5
-Algorithm: 
+Model Type: Histogram Gradient Boosting Classification Tree from the Scikit-Learn library.
+Hyperparameters: It has been trained using a grid search, the best hyperparameters resulted to be the following ones:  
+```
+{'scoring': 'loss', 'min_samples_leaf': 20, 'max_leaf_nodes': 40, 'max_iter': 1000, 'max_depth': 20, 'learning_rate': 0.1, 'l2_regularization': 1}  
+```
 
-The model has been created based on the Histogram Gradient Boosting Classification Tree from the Scikit-Learn library. 
-It returns a binary value meaning to represent whether income exceeds $50K/yr based on census data .
+Result: The model returns a binary value meaning to represent whether income exceeds $50K/yr based on census data .
+Preprocessing: The model assumes a preprocessing 
 
 ## Intended Use
 
@@ -21,9 +25,10 @@ It is used as the basis of a REST web service, wich given the expected features 
 ## Training Data
 
 As Traning data we use census information from https://archive.ics.uci.edu/ml/datasets/census+income.
-Some preprocessing has been done for a better formatting.
-Extraction was done by Barry Becker from the 1994 Census database. 
+Some preprocessing has been done for a better formatting.  Extraction was done by Barry Becker from the 1994 Census database. 
 There are 35261 records in the database, of which 24720 are negative and 7841 positive. Therefore the data is somewhat skewed to income lesser than 50k.
+
+ 
 
 ## Evaluation Data
 

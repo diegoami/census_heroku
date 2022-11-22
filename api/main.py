@@ -1,6 +1,5 @@
 # Put the code for your API here.
 # bar.py
-
 from fastapi import FastAPI
 from values.census_entry import CensusEntry
 from ml.model import inference
@@ -8,6 +7,7 @@ import pandas as pd
 import joblib
 import os
 import numpy as np
+from common.fixtures import first_census_entry
 
 
 dirname = os.path.join(os.getcwd(), 'model', 'latest')
@@ -26,6 +26,14 @@ app = FastAPI()
 async def print_out(body: CensusEntry):
     return body
 
+@app.get("/")
+async def welcome():
+    result = "Welcome to CENSUS API. " \
+             " You have to execute a post call to /predict passing a valid census entry in the body. " \
+             " A valid census_entry is a json file containing following fields: " \
+             " age, workclass, fnlgt, education, education-num, marital-status, occupation " \
+             " relationship, race, sex, capital-gain, capital-loss, hours-per-week, native-country"
+    return {"result": result}
 
 @app.post("/predict")
 async def predict(census_entry: CensusEntry):

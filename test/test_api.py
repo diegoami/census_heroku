@@ -8,6 +8,12 @@ from api.main import app
 client = TestClient(app)
 
 
+def test_get(census_entries):
+    r = client.get("/")
+    assert r.status_code == 200
+    result_call = r.json()["result"]
+    assert "Welcome" in result_call
+
 
 def test_print_out(census_entries):
     for census_entry in census_entries:
