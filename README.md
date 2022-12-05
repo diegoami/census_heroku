@@ -23,6 +23,7 @@ The original data is in the file `orig.csv`
 
 The data analysis can be found in `notebooks`.
 Analysis of data can be started with the command
+
 ```
 jupyter notebook --NotebookApp.iopub_msg_rate_limit=1e10 --NotebookApp.rate_limit_window=30.0 "notebooks/Analyze Census Data.ipynb"
 ```
@@ -35,17 +36,10 @@ An AI Model can be created using the `train_model.py` script. It can be called w
 python train_model.py --model_dir_name <model directory destination> --data_file_name <the data file name to  use>
 ```
 
-The expected output of the training job is something like that:
+or you can use the jupyter Notebook 
 
 ```
-Reading training data from file /home/diego/projects/ud_mlops/census_heroku/data/census.csv
-Starting to train model....
-Found best params: {'scoring': 'loss', 'min_samples_leaf': 15, 'max_leaf_nodes': 30, 'max_iter': 750, 'max_depth': 25, 'learning_rate': 0.01, 'l2_regularization': 0.6}
-Saving model artifacts to /home/diego/projects/ud_mlops/census_heroku/model/latest
-Evaluating performance on test data...
-precision: 0.7987567987567987, recall: 0.6556122448979592, fbeta: 0.7201401050788092
-Evaluating overall performance...
-precision: 0.8031866464339908, recall: 0.6750414487947966, fbeta: 0.7335596978726352
+jupyter notebook --NotebookApp.iopub_msg_rate_limit=1e10 --NotebookApp.rate_limit_window=30.0 "notebooks/Train Model.ipynb"
 ```
 
 By default the model is saved under `model\latest`
@@ -60,13 +54,19 @@ python evaluate_model.py --model_dir_name <model directory destination> --data_f
 
 An evaluation of the model and how it behaves can be found in [notebooks\Analyse Model performance.ipynb](notebooks\Analyse Model performance.ipynb)
 
+```
+jupyter notebook --NotebookApp.iopub_msg_rate_limit=1e10 --NotebookApp.rate_limit_window=30.0 "notebooks\Analyse Model performance.ipynb"
+```
+
 ### LOCAL API
 
 
 
+
 The API used to call the model and retrieve a result can be found in `api/main.py`.
-A web server publishing the model that can be used to return predictions can be started from a command line with `uvicorn api.main:app`, 
+A web server publishing the model that can be used to return predictions can be started from a command line with `uvicorn api.main:app`,  
 which will start tha application on `http://127.0.0.1:8000`.
+
 Then with the test `TEST_LOCAL_API=1 python -m pytest test/test_local_census_api.py` it can be verified that a model is running and giving prediction results
 
 ### TESTING
