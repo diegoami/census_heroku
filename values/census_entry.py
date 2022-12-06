@@ -7,10 +7,10 @@ from enum import Enum
 
 AGE_RANGE = (17, 90)
 FNLGT_RANGE = (0, 1500000)
-EDUCATION_NUM_RANGE = (1,16)
-CAPITAL_GAIN = (0, 10000)
+EDUCATION_NUM_RANGE = (1, 16)
+CAPITAL_GAIN = (0, 100000)
 CAPITAL_LOSS = (0, 4356)
-HOURS_PER_WEEK  = (1, 99)
+HOURS_PER_WEEK = (1, 99)
 
 WORKCLASSES = ["State-gov", "Self-emp-not-inc", "Private", "Federal-gov", "Local-gov", "?",
  "Self-emp-inc" ,"Without-pay", "Never-worked"]
@@ -59,13 +59,43 @@ class CensusEntry(BaseModel):
             raise ValueError(f'workclass {workclass} not valid, must be in {WORKCLASSES}')
         return workclass
 
-
-
     @validator('education')
     def validate_education(cls, education):
         if education.lower() not in all_lower(EDUCATIONS):
             raise ValueError(f'education {education} not valid, must be in {EDUCATIONS}')
         return education
+
+    @validator('age')
+    def validate_age(cls, age):
+        if not AGE_RANGE[0] <= age <= AGE_RANGE[1]:
+            raise ValueError(f'age {age} not valid, must be between {AGE_RANGE[0]} and {AGE_RANGE[1]}')
+        return age
+
+    @validator('education_num')
+    def validate_education_num(cls, education_num):
+        if not EDUCATION_NUM_RANGE[0] <= education_num <= EDUCATION_NUM_RANGE[1]:
+            raise ValueError(f'education_num {education_num} not valid, must be between {EDUCATION_NUM_RANGE[0]} and {EDUCATION_NUM_RANGE[1]}')
+        return education_num
+
+    @validator('capital_gain')
+    def validate_capital_gain(cls, capital_gain):
+        if not CAPITAL_GAIN[0] <= capital_gain <= CAPITAL_GAIN[1]:
+            raise ValueError(f'capital_gain {capital_gain} not valid, must be between {CAPITAL_GAIN[0]} and {CAPITAL_GAIN[1]}')
+        return capital_gain
+
+    @validator('capital_loss')
+    def validate_capital_loss(cls, capital_loss):
+        if not CAPITAL_LOSS[0] <= capital_loss <= CAPITAL_LOSS[1]:
+            raise ValueError(
+                f'capital_loss {capital_loss} not valid, must be between {CAPITAL_LOSS[0]} and {CAPITAL_LOSS[1]}')
+        return capital_loss
+
+    @validator('hours_per_week')
+    def validate_hours_per_week(cls, hours_per_week):
+        if not HOURS_PER_WEEK[0] <= hours_per_week <= HOURS_PER_WEEK[1]:
+            raise ValueError(
+                f'capital_loss {hours_per_week} not valid, must be between {HOURS_PER_WEEK[0]} and {HOURS_PER_WEEK[1]}')
+        return hours_per_week
 
     @validator('marital_status')
     def validate_marital_status(cls, marital_status):
