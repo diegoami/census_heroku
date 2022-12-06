@@ -60,7 +60,7 @@ async def predict(census_entry: CensusEntry):
         X_categorical = encoder.transform(X_categorical)
         X = np.concatenate([X_continuous, X_categorical], axis=1)
         preds = inference(model, X)
-        return {"result": "<=50K" if preds[0] else ">50k"}
+        return {"result": ">50K" if preds[0] else "<=50k"}
     except Exception as e:
         print(e)
         raise HTTPException(status_code=422, detail=e)

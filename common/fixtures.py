@@ -7,17 +7,17 @@ from values.census_entry import WORKCLASSES, EDUCATIONS, MARITAL_STATUSES, OCCUP
 
 def generate_entry():
     random_entry = {}
-    random_entry["age"] = max(round(np.random.normal(38.581647, 13.640433	)), 17)
+    random_entry["age"] = min(max(round(np.random.normal(38.581647, 13.640433)), 17), 90)
     random_entry["workclass"] = random.choice(WORKCLASSES)
-    random_entry["fnlgt"] = max(round(np.random.normal(1.897784e+05, 1.055500e+05)), 0)
+    random_entry["fnlgt"] = min(max(round(np.random.normal(1.897784e+05, 1.055500e+05)), 0), 1500000)
     random_entry["education"] = random.choice(EDUCATIONS)
-    random_entry["education-num"] = max(round(np.random.normal(10.080679, 2.572720)), 1)
+    random_entry["education-num"] = min(max(round(np.random.normal(10.080679, 2.572720)), 1), 16)
     random_entry["marital-status"] = random.choice(MARITAL_STATUSES)
     random_entry["occupation"] = random.choice(OCCUPATIONS)
     random_entry["relationship"] = random.choice(RELATIONSHIPS)
     random_entry["race"] = random.choice(RACES)
     random_entry["sex"] = random.choice(SEXES)
-    random_entry["capital-gain"] = max(round(np.random.normal(1077.648844, 7385.292085)),0)
+    random_entry["capital-gain"] = min(max(round(np.random.normal(1077.648844, 7385.292085)),0),10000)
     random_entry["capital-loss"] = max(round(np.random.normal(87.303830, 402.960219)),0)
     random_entry["hours-per-week"] = max(round(np.random.normal(40.437456, 12.347429)),1)
     random_entry["native-country"] = random.choice(NATIVE_COUNTRIES)

@@ -5,6 +5,13 @@ from enum import Enum
 # age,workclass,fnlgt,education,education-num,marital-status,occupation,relationship,race,sex,capital-gain,capital-loss,hours-per-week,native-country,salary
 # 39,State-gov,77516,Bachelors,13,Never-married,Adm-clerical,Not-in-family,White,Male,2174,0,40,United-States,<=50K
 
+AGE_RANGE = (17, 90)
+FNLGT_RANGE = (0, 1500000)
+EDUCATION_NUM_RANGE = (1, 16)
+CAPITAL_GAIN = (0, 10000)
+CAPITAL_LOSS = (0, 4356)
+CAPITAL_LOSS = (0, 4356)
+
 WORKCLASSES = ["State-gov", "Self-emp-not-inc", "Private", "Federal-gov", "Local-gov", "?",
  "Self-emp-inc" ,"Without-pay", "Never-worked"]
 EDUCATIONS = ["Bachelors", "HS-grad", "11th", "Masters", "9th", "Some-college", "Assoc-acdm",
