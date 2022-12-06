@@ -7,10 +7,10 @@ from enum import Enum
 
 AGE_RANGE = (17, 90)
 FNLGT_RANGE = (0, 1500000)
-EDUCATION_NUM_RANGE = (1, 16)
+EDUCATION_NUM_RANGE = (1,16)
 CAPITAL_GAIN = (0, 10000)
 CAPITAL_LOSS = (0, 4356)
-CAPITAL_LOSS = (0, 4356)
+HOURS_PER_WEEK  = (1, 99)
 
 WORKCLASSES = ["State-gov", "Self-emp-not-inc", "Private", "Federal-gov", "Local-gov", "?",
  "Self-emp-inc" ,"Without-pay", "Never-worked"]
@@ -58,6 +58,8 @@ class CensusEntry(BaseModel):
         if workclass.lower() not in all_lower(WORKCLASSES):
             raise ValueError(f'workclass {workclass} not valid, must be in {WORKCLASSES}')
         return workclass
+
+
 
     @validator('education')
     def validate_education(cls, education):

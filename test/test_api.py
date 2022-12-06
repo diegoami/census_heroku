@@ -1,6 +1,6 @@
 import json
 from fastapi.testclient import TestClient
-from common.fixtures import census_entries, wrong_census_entries
+from common.fixtures import census_entries, wrong_census_entries, generate_entries
 
 
 from api.main import app
@@ -20,6 +20,8 @@ def test_print_out(census_entries):
         r = client.post("/print_out", json=census_entry)
         result_call = r.json()
         assert "age" in result_call
+
+
 
 def test_predict_right(census_entries):
     for census_entry in census_entries:

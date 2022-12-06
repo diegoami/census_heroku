@@ -3,7 +3,7 @@ import unittest
 import pytest
 from ml.model import train_model, compute_model_metrics, inference
 import numpy as np
-rng = np.random.default_rng(seed=42)
+rng = np.random.default_rng(seed=42 )
 
 
 class ModelTestCase(unittest.TestCase):
