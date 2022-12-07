@@ -85,11 +85,11 @@ To ensure deployment on Heroku, two workflows have been setup,
 * _deploy_ deploys the model to heroku. The model deployed is the one in the directory `model/latest`
 
 
-It deploys to a different application (`atlantic-shell-34953`)
+It deploys to a different application (`ionian-otter-6666`)
 After deployment, a test can be executed to verify that the Remote API works correctly
 
 ```
-TEST_REMOTE_API=1 HOST=pacific-garden-34952.herokuapp.com python -m pytest test/test_remote_census_api.py
+TEST_REMOTE_API=1 HOST=ionian-otter-6666.herokuapp.com python -m pytest test/test_remote_census_api.py
 TEST_REMOTE_API=1 HOST=atlantic-shell-34953.herokuapp.com python -m pytest test/test_remote_census_api.py
 ```
 
