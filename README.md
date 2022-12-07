@@ -90,11 +90,11 @@ After deployment, a test can be executed to verify that the Remote API works cor
 
 ```
 TEST_REMOTE_API=1 HOST=ionian-otter-6666.herokuapp.com python -m pytest test/test_remote_census_api.py
-TEST_REMOTE_API=1 HOST=sanguinetto_news_1357.herokuapp.com python -m pytest test/test_remote_census_api.py
+TEST_REMOTE_API=1 HOST=sanguinetto-news-1357.herokuapp.com python -m pytest test/test_remote_census_api.py
 ```
 
 
-## HEROKU REPOSITORY
+## CREATE APP WITH HEROKU
 
 An application has been created with Heroku:
 
