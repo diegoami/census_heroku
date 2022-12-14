@@ -13,11 +13,11 @@ python -m pip install -r requirements_local.txt
 
 The data can be found in the directory `data`. It is managed with DVC by means of `census.csv.dvc`.
 It is retrieved from a remote repository, `s3://ud-mlops-3/census`
-It can be retrieved wit `dvc pull`
+It can be retrieved with `dvc pull`
 
 Using this data we can create a model able to predict whether someone earns more or less than 50K based on their census data.
 It contains a version of the census data, which has been managed with `DVC` and cleaned up to get better results
-The original data is in the file `orig.csv`
+The original data is in the file `orig_census.csv.dcv`
 
 ### DATA ANALYSIS
 
@@ -30,11 +30,12 @@ jupyter notebook --NotebookApp.iopub_msg_rate_limit=1e10 --NotebookApp.rate_limi
 
 ### MODEL CREATION
 
-An AI Model can be created using the `train_model.py` script. It can be called with following parameters
+An AI Model can be created using the `train_model.py` script. It can be called with following, optional parameters
 
 ```
 python train_model.py --model_dir_name <model directory destination> --data_file_name <the data file name to  use>
 ```
+
 
 or you can use the jupyter Notebook 
 
@@ -75,7 +76,6 @@ You can also use the notebook [notebooks\Start API.ipynb](notebooks\Start API.ip
 The tests are located in the `test` directory and can be executed with `PYTHONPATH=$(pwd) pytest`.
 
 
-
 ## DEPLOYING REMOTELY
 
 The project is deployed on github: https://github.com/diegoami/census_heroku
@@ -85,8 +85,9 @@ To ensure deployment on Heroku, two workflows have been setup,
 * _test_and_deploy_ executes retrieves data, creates a model and deploys it on heroku
 * _deploy_ deploys the model to heroku. The model deployed is the one in the directory `model/latest`
 
+For it to work correctly, the following
 
-It deploys to a different application (`ionian-otter-6666`)
+The two scripts deploy to a different applications: ```ionian-otter-6666``` and ```sanguinetto-news-1357```
 After deployment, a test can be executed to verify that the Remote API works correctly
 
 ```
@@ -97,14 +98,3 @@ TEST_REMOTE_API=1 HOST=sanguinetto-news-1357.herokuapp.com python -m pytest test
 You can also use the notebook [notebooks\Start Remote API.ipynb](notebooks\Start Remote API.ipynb) to test the remote call to the API.
 
 
-## CREATE APP WITH HEROKU
-
-An application has been created with Heroku:
-
-
-```
-heroku login
-heroku create
-heroku config:set PROJECT_PATH=$(pwd) 
-git push heroku main:main
-```
