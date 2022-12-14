@@ -14,7 +14,7 @@ Hyperparameters: It has been trained using a grid search, the best hyperparamete
 ```
 
 Result: The model returns a binary value meaning to represent whether income exceeds $50K/yr based on census data .
-Preprocessing: The model assumes a preprocessing 
+Preprocessing: The model assumes a preprocessing to conveted categorical features to one hot encoding
 
 ## Intended Use
 
@@ -27,13 +27,11 @@ It is used as the basis of a REST web service, wich given the expected features 
 As Traning data we use census information from https://archive.ics.uci.edu/ml/datasets/census+income.
 Some preprocessing has been done for a better formatting.  Extraction was done by Barry Becker from the 1994 Census database. 
 There are 35261 records in the database, of which 24720 are negative and 7841 positive. Therefore the data is somewhat skewed to income lesser than 50k.
-
  
 
 ## Evaluation Data
 
 As Evaluation Data we use a subset from the full dataset, which we do not user for training, containing about 20% of the data.
-
 
 ## Metrics
 

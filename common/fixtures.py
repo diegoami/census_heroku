@@ -6,6 +6,10 @@ random_nums = np.random.normal(loc=550, scale=30, size=1000)
 from values.census_entry import WORKCLASSES, EDUCATIONS, MARITAL_STATUSES, OCCUPATIONS, RELATIONSHIPS, RACES, SEXES, NATIVE_COUNTRIES
 
 def generate_entry():
+    """
+    Creates a random entry to test the model
+    """
+
     random_entry = {}
     random_entry["age"] = min(max(round(np.random.normal(38.581647, 13.640433)), 17), 90)
     random_entry["workclass"] = random.choice(WORKCLASSES)
