@@ -52,7 +52,7 @@ if __name__ == "__main__":
     lb = joblib.load(os.path.join(dirname, 'lb'))
     cat_features = joblib.load(os.path.join(dirname, 'cat_features'))
 
-    X, y, _, _ =  process_data(
+    X, y, _, _ = process_data(
         data, categorical_features=cat_features, label="salary", encoder = encoder, lb = lb, training = False
     )
 

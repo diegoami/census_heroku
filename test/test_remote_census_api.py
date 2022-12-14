@@ -13,6 +13,13 @@ def host():
 def port():
     return os.environ.get("PORT", 80)
 
+@pytest.mark.skipif(os.environ.get("TEST_REMOTE_API") == None, reason="TEST_REMOTE_API not defined")
+def test_welcome():
+    response = requests.get('http://127.0.0.1:8000/')
+    assert response.status_code == 200
+    result_call = response.json()
+    assert "welcome" in result_call["result"].lower()
+
 
 @pytest.mark.skipif(os.environ.get("TEST_REMOTE_API") == None, reason="TEST_REMOTE_API not defined")
 def test_predict(census_entries, host, port):

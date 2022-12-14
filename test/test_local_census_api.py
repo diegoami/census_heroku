@@ -2,7 +2,17 @@ import requests
 from common.fixtures import census_entries, wrong_census_entries, generate_entries
 import pytest
 import os
+
 from common.fixtures import generate_entry
+
+
+@pytest.mark.skipif(os.environ.get("TEST_LOCAL_API") == None, reason="TEST_LOCAL_API not defined")
+def test_welcome():
+    response = requests.get('http://127.0.0.1:8000/')
+    assert response.status_code == 200
+    result_call = response.json()
+    assert "welcome" in result_call["result"].lower()
+
 
 @pytest.mark.skipif(os.environ.get("TEST_LOCAL_API") == None, reason="TEST_LOCAL_API not defined")
 def test_predict_right(census_entries):
