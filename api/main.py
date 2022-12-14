@@ -1,14 +1,14 @@
 # Put the code for your API here.
 # bar.py
 from fastapi import FastAPI, HTTPException
-from values.census_entry import CensusEntry
+from values.census_entry import CensusEntry, SAMPLE_ENTRY
 from ml.model import inference
 import pandas as pd
 import joblib
 import os
 import numpy as np
 import uvicorn
-
+import pprint
 
 from pydantic import BaseSettings, ValidationError
 
@@ -27,7 +27,27 @@ cat_features = joblib.load(os.path.join(dirname, 'cat_features'))
 # API Deployment
 
 
-app = FastAPI()
+description= f"""
+This API allows you texecute a prediction based on provided features of a family, to guess whether the family is expected to make more or less than 50k. 
+
+## Input Data
+
+A census_entry contains following fields, with the accepted ranges and values
+
+```
+{pprint.pformat(SAMPLE_ENTRY, compact=True, sort_dicts=False)}
+```
+
+## Method
+
+You can execute a prediction with the *predict* method:
+"""
+
+
+app = FastAPI(
+    title="Income Prediction",
+    description=description
+)
 
 
 @app.post("/print_out")

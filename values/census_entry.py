@@ -33,6 +33,40 @@ NATIVE_COUNTRIES = ["United-States", "Cuba", "Jamaica", "India", "?", "Mexico", 
  "Outlying-US(Guam-USVI-etc)", "Scotland", "Trinadad&Tobago", "Greece",
  "Nicaragua", "Vietnam", "Hong", "Ireland", "Hungary", "Holand-Netherlands"]
 
+SAMPLE_ENTRY = {
+    "age": AGE_RANGE,
+    "workclass": WORKCLASSES,
+    "fnlgt": FNLGT_RANGE,
+    "education": EDUCATIONS,
+    "education-num": EDUCATION_NUM_RANGE,
+    "marital-status": MARITAL_STATUSES,
+    "occupation": OCCUPATIONS,
+    "relationship": RELATIONSHIPS,
+    "race": RACES,
+    "sex": SEXES,
+    "capital-gain": CAPITAL_GAIN,
+    "capital-loss": CAPITAL_LOSS,
+    "hours-per-week": HOURS_PER_WEEK,
+    "native-country": NATIVE_COUNTRIES
+}
+
+first_census_entry = {
+    "age": 20,
+    "workclass": "State-gov",
+    "fnlgt": 3000,
+    "education": "Doctorate",
+    "education-num": 10,
+    "marital-status": "Never-married",
+    "occupation": "Sales",
+    "relationship": "Not-in-family",
+    "race": "White",
+    "sex": "Male",
+    "capital-gain": 10000,
+    "capital-loss": 0,
+    "hours-per-week": 40,
+    "native-country": "United-States"
+}
+
 
 def all_lower(lst):
     return [x.lower() for x in lst]

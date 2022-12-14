@@ -65,7 +65,15 @@ jupyter notebook --NotebookApp.iopub_msg_rate_limit=1e10 --NotebookApp.rate_limi
 
 The API used to call the model and retrieve a result can be found in `api/main.py`.
 A web server publishing the model that can be used to return predictions can be started from a command line with `uvicorn api.main:app`,  
-which will start tha application on `http://127.0.0.1:8000`.
+which will start the application on `http://127.0.0.1:8000`.
+
+Under `http://127.0.0.1:8000/docs`, you will be able to submit a request
+
+![description](images/call_1.jpg)
+
+![correct request](images/call_response_1.png)
+
+![wrong request](images/call_response_2.png)
 
 Then with the test `TEST_LOCAL_API=1 python -m pytest test/test_local_census_api.py` it can be verified that a model is running and giving prediction results
 
@@ -85,15 +93,19 @@ To ensure deployment on Heroku, two workflows have been setup,
 * _test_and_deploy_ executes retrieves data, creates a model and deploys it on heroku
 * _deploy_ deploys the model to heroku. The model deployed is the one in the directory `model/latest`
 
-For it to work correctly, the following
 
-The two scripts deploy to a different applications: ```ionian-otter-6666``` and ```sanguinetto-news-1357```
+The two scripts deploy to a different applications: ```ionian-otter-6666``` and ```sanguinetto-news-1357```.
+The API can be accessed from `http://ionian-otter-6666/docs` and  `http://sanguinetto-news-1357/docs` respectively.
+
+
 After deployment, a test can be executed to verify that the Remote API works correctly
 
 ```
 TEST_REMOTE_API=1 HOST=ionian-otter-6666.herokuapp.com python -m pytest test/test_remote_census_api.py
 TEST_REMOTE_API=1 HOST=sanguinetto-news-1357.herokuapp.com python -m pytest test/test_remote_census_api.py
 ```
+
+Both application are accessible at http://ionian-otter-6666.herokuapp.com/docs and http://sanguinetto-news-1357.herokuapp.com/docs
 
 You can also use the notebook [notebooks\Start Remote API.ipynb](notebooks\Start Remote API.ipynb) to test the remote call to the API.
 
