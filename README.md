@@ -43,7 +43,7 @@ or you can use the jupyter Notebook  [notebooks/Train_Model.ipynb](notebooks/Tra
 jupyter notebook --NotebookApp.iopub_msg_rate_limit=1e10 --NotebookApp.rate_limit_window=30.0 "notebooks/Train_Model.ipynb"
 ```
 
-By default the model is saved under `model\latest`
+By default the model is saved under `model/latest`
 
 ### EVALUATE MODEL
 
@@ -58,6 +58,8 @@ An evaluation of the model and how it behaves can be found in [notebooks/Analyse
 ```
 jupyter notebook --NotebookApp.iopub_msg_rate_limit=1e10 --NotebookApp.rate_limit_window=30.0 "notebooks\Analyse Model performance.ipynb"
 ```
+
+A model card can be found in [Model Card](model_card.md)
 
 ### LOCAL API
 
