@@ -11,8 +11,10 @@ import os
 
 from ml.data import process_data
 from ml.model import inference, compute_model_metrics
-from ml.eval import get_tn_fp_fn_tp
+from ml.eval import get_tn_fp_fn_tp, list_unique_features, show_performance_on_slices
+
 from sklearn.metrics import confusion_matrix
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -65,22 +67,6 @@ if __name__ == "__main__":
 
     print("\n============================================\n")
 
-    for slice_feature in cat_features:
-        list_unique = data[slice_feature].unique()
-        print(f"{slice_feature} : {list_unique}")
+    list_unique_features(data, cat_features)
 
-    for slice_feature in cat_features:
-        print(f"==== SLICE FORF FEATURE : {slice_feature}")
-        for cls in data[slice_feature].unique():
-            print(f"== CLS FOR FEATURE : {cls}")
-            idx_slice = data[slice_feature] == cls
-            x_slice, y_slice, preds_slice = X[idx_slice], y[idx_slice], preds[idx_slice]
-
-            precision, recall, fbeta = compute_model_metrics(y_slice, preds_slice)
-            print(f"precision: {precision}, recall: {recall}, fbeta: {fbeta}")
-            if y_slice is not None and preds_slice is not None:
-                slice_result = get_tn_fp_fn_tp(y_slice, preds_slice)
-                if slice_result:
-                    tn, fp, fn, tp = slice_result
-                    print(f"TN, FP, FN, TP: {(tn, fp, fn, tp)}")
-        print("\n\n\n\n")
+    show_performance_on_slices(data, X, y, preds, cat_features)

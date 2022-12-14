@@ -62,12 +62,13 @@ jupyter notebook --NotebookApp.iopub_msg_rate_limit=1e10 --NotebookApp.rate_limi
 
 
 
-
 The API used to call the model and retrieve a result can be found in `api/main.py`.
 A web server publishing the model that can be used to return predictions can be started from a command line with `uvicorn api.main:app`,  
 which will start tha application on `http://127.0.0.1:8000`.
 
 Then with the test `TEST_LOCAL_API=1 python -m pytest test/test_local_census_api.py` it can be verified that a model is running and giving prediction results
+
+You can also use the notebook [notebooks\Start API.ipynb](notebooks\Start API.ipynb) to test the loca call to the API.
 
 ### TESTING
 
@@ -92,6 +93,8 @@ After deployment, a test can be executed to verify that the Remote API works cor
 TEST_REMOTE_API=1 HOST=ionian-otter-6666.herokuapp.com python -m pytest test/test_remote_census_api.py
 TEST_REMOTE_API=1 HOST=sanguinetto-news-1357.herokuapp.com python -m pytest test/test_remote_census_api.py
 ```
+
+You can also use the notebook [notebooks\Start Remote API.ipynb](notebooks\Start Remote API.ipynb) to test the remote call to the API.
 
 
 ## CREATE APP WITH HEROKU
