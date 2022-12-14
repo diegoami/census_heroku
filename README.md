@@ -22,10 +22,10 @@ The original data is in the file `orig_census.csv.dcv`
 ### DATA ANALYSIS
 
 The data analysis can be found in `notebooks`.
-Analysis of data can be started with the command
+Analysis of data can be started in the notebook [notebooks\Analyse Census_Data.ipynb](notebooks\Analyse Census_Data.ipynb) with the command
 
 ```
-jupyter notebook --NotebookApp.iopub_msg_rate_limit=1e10 --NotebookApp.rate_limit_window=30.0 "notebooks/Analyze Census Data.ipynb"
+jupyter notebook --NotebookApp.iopub_msg_rate_limit=1e10 --NotebookApp.rate_limit_window=30.0 "notebooks/Analyze_Census_Data.ipynb"
 ```
 
 ### MODEL CREATION
@@ -37,10 +37,10 @@ python train_model.py --model_dir_name <model directory destination> --data_file
 ```
 
 
-or you can use the jupyter Notebook 
+or you can use the jupyter Notebook  [notebooks\Train_Model.ipynb](notebooks\Train_Model.ipynb)
 
 ```
-jupyter notebook --NotebookApp.iopub_msg_rate_limit=1e10 --NotebookApp.rate_limit_window=30.0 "notebooks/Train Model.ipynb"
+jupyter notebook --NotebookApp.iopub_msg_rate_limit=1e10 --NotebookApp.rate_limit_window=30.0 "notebooks/Train_Model.ipynb"
 ```
 
 By default the model is saved under `model\latest`
@@ -53,7 +53,7 @@ To evaluate your model, execute
 python evaluate_model.py --model_dir_name <model directory destination> --data_file_name <the data file name to  use>
 ```
 
-An evaluation of the model and how it behaves can be found in [notebooks\Analyse Model performance.ipynb](notebooks\Analyse Model performance.ipynb)
+An evaluation of the model and how it behaves can be found in [notebooks\Analyse Model performance.ipynb](notebooks\Analyse_Model_performance.ipynb)
 
 ```
 jupyter notebook --NotebookApp.iopub_msg_rate_limit=1e10 --NotebookApp.rate_limit_window=30.0 "notebooks\Analyse Model performance.ipynb"
@@ -77,7 +77,7 @@ Under `http://127.0.0.1:8000/docs`, you will be able to submit a request
 
 Then with the test `TEST_LOCAL_API=1 python -m pytest test/test_local_census_api.py` it can be verified that a model is running and giving prediction results
 
-You can also use the notebook [notebooks\Start API.ipynb](notebooks\Start API.ipynb) to test the loca call to the API.
+You can also use the notebook [notebooks\Start API.ipynb](notebooks\Start_API.ipynb) to test the loca call to the API.
 
 ### TESTING
 
@@ -111,7 +111,7 @@ TEST_REMOTE_API=1 HOST=sanguinetto-news-1357.herokuapp.com python -m pytest test
 ```
 
 
-You can also use the notebook [notebooks\Start Remote API.ipynb](notebooks\Start Remote API.ipynb) to test the remote call to the API.
+You can also use the notebook [notebooks\Start Remote API.ipynb](notebooks\Start_Remote_API.ipynb) to test the remote call to the API.
 
 You can also execute the script `sample_requests.py`
 
