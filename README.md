@@ -77,7 +77,7 @@ Under `http://127.0.0.1:8000/docs`, you will be able to submit a request
 
 Then with the test `TEST_LOCAL_API=1 python -m pytest test/test_local_census_api.py` it can be verified that a model is running and giving prediction results
 
-You can also use the notebook [notebooks/Start API.ipynb](notebooks/Start_API.ipynb) to test the loca call to the API.
+You can also use the notebook [notebooks/Start API.ipynb](notebooks/Start_API.ipynb) to test the local call to the API.
 
 ### TESTING
 
