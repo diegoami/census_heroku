@@ -72,20 +72,20 @@ def all_lower(lst):
     return [x.lower() for x in lst]
 
 class CensusEntry(BaseModel):
-    age: int
-    workclass: str
-    fnlgt: int
-    education: str
-    education_num: int = Field(alias='education-num')
-    marital_status: str = Field(alias='marital-status')
-    occupation: str
-    relationship: str
-    race: str
-    sex: str
-    capital_gain: int = Field(alias='capital-gain')
-    capital_loss: int = Field(alias='capital-loss')
-    hours_per_week: int = Field(alias='hours-per-week')
-    native_country: str = Field(alias='native-country')
+    age: int = Field(example=20)
+    workclass: str = Field(example="Private")
+    fnlgt: int = Field(example=100000)
+    education: str = Field(example="Masters")
+    education_num: int = Field(alias='education-num', example=10)
+    marital_status: str = Field(alias='marital-status', example="Married-civ-spouse")
+    occupation: str = Field(example="Tech-support")
+    relationship: str = Field(example="Husband")
+    race: str = Field(example="White")
+    sex: str = Field(example="Male")
+    capital_gain: int = Field(alias='capital-gain', example=100000)
+    capital_loss: int = Field(alias='capital-loss', example=1000)
+    hours_per_week: int = Field(alias='hours-per-week', example=40)
+    native_country: str = Field(alias='native-country', example="United-States")
 
     @validator('workclass')
     def validate_workclass(cls, workclass):
