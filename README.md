@@ -1,4 +1,6 @@
-## LOCAL DEPLOYMENT
+## PREDICTION INCOME BASED ON CENSUS DATA
+
+https://github.com/diegoami/census_heroku/
 
 ### SET UP ENVIRONMENT
 To execute the code locally, set up a conda environment with the following command
