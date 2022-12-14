@@ -4,3 +4,4 @@ data/new_user_credentials.csv
 .pytest_cache
 *.pyc
 **/*.pyc
+notebooks/.ipynb_checkpoints/*
