@@ -1,13 +1,9 @@
-# Script to train machine learning model.
-
-from sklearn.model_selection import train_test_split
-
-# Add the necessary imports for the starter code.
 #!/usr/bin/env python
 import argparse
 import pandas as pd
 import joblib
 import os
+from sklearn.model_selection import train_test_split
 
 
 from ml.data import process_data

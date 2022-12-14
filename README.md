@@ -88,15 +88,20 @@ The tests are located in the `test` directory and can be executed with `PYTHONPA
 
 The project is deployed on github: https://github.com/diegoami/census_heroku
 
-To ensure deployment on Heroku, two workflows have been setup,
+To ensure CI/CD and deployment on Heroku, three workflows have been set up.
 
+* _test_ executes tests, but does not deploy
 * _test_and_deploy_ executes retrieves data, creates a model and deploys it on heroku
 * _deploy_ deploys the model to heroku. The model deployed is the one in the directory `model/latest`
 
+![continous deployment](images/continuous_deloyment.png)
+
+![income_prediction](images/income_prediction.png)
 
 The two scripts deploy to a different applications: ```ionian-otter-6666``` and ```sanguinetto-news-1357```.
-The API can be accessed from `http://ionian-otter-6666/docs` and  `http://sanguinetto-news-1357/docs` respectively.
+The API can be accessed from `http://http://ionian-otter-6666.herokuapp.com/docs` and  `http://sanguinetto-news-1357.herokuapp.com/docs` respectively.
 
+## REMOTE TEST
 
 After deployment, a test can be executed to verify that the Remote API works correctly
 
@@ -105,8 +110,9 @@ TEST_REMOTE_API=1 HOST=ionian-otter-6666.herokuapp.com python -m pytest test/tes
 TEST_REMOTE_API=1 HOST=sanguinetto-news-1357.herokuapp.com python -m pytest test/test_remote_census_api.py
 ```
 
-Both application are accessible at http://ionian-otter-6666.herokuapp.com/docs and http://sanguinetto-news-1357.herokuapp.com/docs
 
 You can also use the notebook [notebooks\Start Remote API.ipynb](notebooks\Start Remote API.ipynb) to test the remote call to the API.
 
+You can also execute the script `sample_requests.py`
 
+![request script](images/live_post.png)
