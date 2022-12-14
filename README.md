@@ -22,7 +22,7 @@ The original data is in the file `orig_census.csv.dcv`
 ### DATA ANALYSIS
 
 The data analysis can be found in `notebooks`.
-Analysis of data can be started in the notebook [notebooks/Analyse Census_Data.ipynb](notebooks/Analyse Census_Data.ipynb) with the command
+Analysis of data can be started in the notebook [notebooks/Analyse Census_Data.ipynb](notebooks/Analyse_Census_Data.ipynb) with the command
 
 ```
 jupyter notebook --NotebookApp.iopub_msg_rate_limit=1e10 --NotebookApp.rate_limit_window=30.0 "notebooks/Analyze_Census_Data.ipynb"
