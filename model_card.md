@@ -1,25 +1,25 @@
 # Model Card
 
-Model card speicification on https://arxiv.org/pdf/1810.03993.pdf
+Model card specification on https://arxiv.org/pdf/1810.03993.pdf
 
 ## Model Details
 
-Developed by: Diego Amicabile
-On: 18th of October 2022
-Version: 5
-Model Type: Histogram Gradient Boosting Classification Tree from the Scikit-Learn library.
-Hyperparameters: It has been trained using a grid search, the best hyperparameters resulted to be the following ones:  
+* Developed by: Diego Amicabile
+* On: 18th of October 2022
+* Version: 5
+* Model Type: Histogram Gradient Boosting Classification Tree from the Scikit-Learn library.
+* Hyperparameters: It has been trained using a grid search, the best hyperparameters resulted to be the following ones:  
 ```
 {'scoring': 'loss', 'min_samples_leaf': 20, 'max_leaf_nodes': 40, 'max_iter': 1000, 'max_depth': 20, 'learning_rate': 0.1, 'l2_regularization': 1}  
 ```
 
-Result: The model returns a binary value meaning to represent whether income exceeds $50K/yr based on census data .
-Preprocessing: The model assumes a preprocessing to conveted categorical features to one hot encoding
+* Result: The model returns a binary value meaning to represent whether income exceeds $50K/yr based on census data .
+* Preprocessing: The model assumes a preprocessing to conveted categorical features to one hot encoding
 
 ## Intended Use
 
 The intended use of the model is to execute a prediction based on provided features of a family, to guess whether the family is expected to make more or less than 50k. 
-It is used as the basis of a REST web service, wich given the expected features will return a result of '<=50k' or '>50k' 
+It is used as the basis of a REST web service, wich given the expected features will return a result of `<=50k` or `>50k`.
 
 
 ## Training Data
