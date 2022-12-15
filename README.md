@@ -94,7 +94,7 @@ The project is deployed on github: https://github.com/diegoami/census_heroku
 
 To ensure CI/CD and deployment on Heroku, three workflows have been set up.
 
-* _test_ executes tests, but does not deploy
+* _test_ executes tests, but does not deploy. 
 * _test_and_deploy_ executes retrieves data, creates a model and deploys it on heroku
 * _deploy_ deploys the model to heroku. The model deployed is the one in the directory `model/latest`
 
@@ -102,8 +102,12 @@ To ensure CI/CD and deployment on Heroku, three workflows have been set up.
 
 ![income_prediction](images/income_prediction.png)
 
+
 The two scripts deploy to a different applications: ```ionian-otter-6666``` and ```sanguinetto-news-1357```.
+
+Both app are configured to be redeployed after a commit on this repository and the execution of the _test_ action.
 The API can be accessed from `http://http://ionian-otter-6666.herokuapp.com/docs` and  `http://sanguinetto-news-1357.herokuapp.com/docs` respectively.
+
 
 ## REMOTE TEST
 
