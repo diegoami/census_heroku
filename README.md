@@ -98,7 +98,7 @@ To ensure CI/CD and deployment on Heroku, three workflows have been set up.
 * _test_and_deploy_  retrieves data, creates a model and deploys it on manually heroku
 * _deploy_ deploys the model to heroku. The model deployed is the one in the directory `model/latest`
 
-![continous deployment](images/continuous_deloyment.png)
+![continous deployment](images/continuous_deployment.png)
 
 ![income_prediction](images/income_prediction.png)
 
